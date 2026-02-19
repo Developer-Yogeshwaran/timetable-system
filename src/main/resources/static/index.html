@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Futuristic Timetable Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <h1 class="title">⚡ Timetable Generator</h1>
+
+    <!-- Configuration Card -->
+    <div class="card">
+        <h2>General Settings</h2>
+        <div class="grid">
+            <input type="number" id="days" placeholder="Number of Days">
+            <input type="number" id="periods" placeholder="Periods per Day">
+            <input type="time" id="startTime">
+            <input type="number" id="duration" placeholder="Period Duration (min)">
+            <input type="number" id="breakAfter" placeholder="Break After Period">
+            <input type="number" id="breakDuration" placeholder="Break Duration (min)">
+            <input type="number" id="lunchAfter" placeholder="Lunch After Period">
+            <input type="number" id="lunchDuration" placeholder="Lunch Duration (min)">
+        </div>
+    </div>
+
+    <!-- Subjects -->
+    <div class="card">
+        <h2>Subjects</h2>
+        <div id="subjects" class="subjects"></div>
+
+        <div class="btn-group">
+            <button class="btn-neon green" onclick="addSubject()">+ Add Subject</button>
+            <button id="generateBtn" class="btn-neon" onclick="generateTimetable()">Generate Timetable</button>
+            <button class="btn-neon purple" onclick="downloadPDF()">Download PDF</button>
+        </div>
+    </div>
+
+    <!-- Output -->
+    <div class="output-card">
+        <h2>Generated Timetable</h2>
+        <div id="timetable"></div>
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
+
