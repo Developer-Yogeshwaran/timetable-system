@@ -1,6 +1,7 @@
-timetableservice.java- package com.example.timetable.service;
+package com.example.timetable.service;
 
-import com.example.timetable.model.*;
+import com.example.timetable.entity.*;
+import com.example.timetable.dto.TimetableRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -18,7 +19,7 @@ public class TimetableService {
         int days = request.getNumberOfDays();
         int periodsPerDay = request.getPeriodsPerDay();
 
-        LocalTime currentTime = LocalTime.parse(request.getStartTime());
+        LocalTime currentTime = request.getStartTime();
 
         List<Subject> subjects = new ArrayList<>(request.getSubjects());
 
@@ -36,7 +37,7 @@ public class TimetableService {
 
         for (int day = 1; day <= days; day++) {
 
-            currentTime = LocalTime.parse(request.getStartTime());
+            currentTime = request.getStartTime();
 
             for (int period = 1; period <= periodsPerDay; period++) {
 

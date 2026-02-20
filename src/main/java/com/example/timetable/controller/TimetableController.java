@@ -1,7 +1,7 @@
 package com.example.timetable.controller;
 
-import com.example.timetable.model.TimetableEntry;
-import com.example.timetable.model.TimetableRequest;
+import com.example.timetable.entity.TimetableEntry;
+import com.example.timetable.dto.TimetableRequest;
 import com.example.timetable.service.TimetableService;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.PdfDocument;
