@@ -57,6 +57,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- H2 Database (for local/in-memory dev and Render testing) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version>
+            <scope>runtime</scope>
+        </dependency>
         <!-- iText PDF -->
         <dependency>
             <groupId>com.itextpdf</groupId>
