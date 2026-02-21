@@ -15,6 +15,7 @@ public class TimetableEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "day_of_week")
     private String day;
 
     private int periodNumber;
