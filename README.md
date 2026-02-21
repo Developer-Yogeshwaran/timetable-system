@@ -63,3 +63,58 @@ Alternative (no Docker): set build and start commands in Render:
 
 ---
 Files changed for Render/H2 support: `pom.xml`, `src/main/resources/application.properties`, `Procfile`, `render.yaml`.
+
+## Project folder (key files)
+- `pom.xml` — Maven project file and dependencies
+- `Dockerfile` — Docker build for container deployments
+- `Procfile` — simple start command used by some platforms
+- `render.yaml` — starter Render service config (Docker)
+- `src/main/java` — application source code
+	- `com.example.timetable` — main package
+	- `controller` — REST controllers (`TimetableController`, `PdfController`)
+	- `service` — business logic (`TimetableService`, `TimetableGenerator`)
+	- `entity` — JPA entities (`TimetableEntry`, `TimetableConfig`, `Subject`)
+	- `repository` — Spring Data JPA repositories
+- `src/main/resources` — application resources
+	- `static` — frontend `index.html`, JS, CSS
+	- `templates` — (optional server-side templates)
+	- `application.properties` — runtime configuration (H2 / MySQL toggles)
+
+## Usage (quick)
+- Build:
+```bash
+./mvnw -DskipTests package
+```
+- Run (dev / H2):
+```bash
+./mvnw spring-boot:run
+```
+Or run package:
+```bash
+java -jar target/timetable-0.0.1-SNAPSHOT.jar
+```
+
+Common actions
+- Open UI: `http://localhost:8080/`
+- H2 console: `http://localhost:8080/h2-console` (JDBC `jdbc:h2:mem:timetable`, user `sa`)
+- Generate timetable (example):
+```bash
+curl -X POST http://localhost:8080/api/timetable/generate \
+	-H "Content-Type: application/json" \
+	-d '{ "numberOfDays":5, "periodsPerDay":6, "periodDuration":50 }'
+```
+- Download last timetable PDF:
+```bash
+curl -O http://localhost:8080/api/timetable/pdf
+```
+
+## Technologies used
+- Java 17
+- Spring Boot (Web, Data JPA)
+- H2 (in-memory) and MySQL Connector/J (runtime)
+- Hibernate ORM
+- iText 7 (PDF generation)
+- Lombok (boilerplate reduction)
+- Maven (build)
+- Docker (container), Render (deployment)
+
